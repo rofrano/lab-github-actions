@@ -14,14 +14,14 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: python:3.11-slim
+    container: python:3.12-slim
 
     # Required services    
     services:
       # Label used to access the service container
       redis:
         # Docker Hub image
-        image: redis:6-alpine
+        image: redis:8-alpine
         # Set health checks to wait until redis has started
         options: >-
           --health-cmd "redis-cli ping"
