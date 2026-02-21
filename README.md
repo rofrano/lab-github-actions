@@ -43,18 +43,18 @@ If it does not automatically prompt you to open the project in a container, you 
 This option is not recommended because developing natively on your local computer does ensure that the code will work on anyone elses computer or in production.  I strongly recommend that you Docker with Visual Studio Code to create a reproducible development environment, but if you cannot for some reason, and have Python 3 installed on your computer, you can make a Python virtual environment and run the code locally with:
 
 ```bash
-    python3 -m venv venv
-    source venv/bin/activate
-    pip install -r requirements.txt
+    pip3 install pipenv
+    pipenv shell
+    pipenv install -dev
 ```
 
 You will also need Docker on your computer to run a container for the database.
 
 ```bash
-docker run -d --name redis -p 6379:6379 -v redis:/data redis:alpine
+docker run -d --name redis -p 6379:6379 -v redis:/data redis:8-alpine
 ```
 
-This will run Redis on Alpine and have it forward port `6379` so that your application and communicate with it.
+This will run Redis 8 on Alpine and have it forward port `6379` so that your application and communicate with it.
 
 You can now run `make test` to run the TDD tests locally.
 
@@ -66,13 +66,13 @@ honcho start
 
 ## Manually running the Tests
 
-Run the tests using `green` and `coverage`
+Run the tests using `pytest` and `coverage`
 
 ```bash
 make test
 ```
 
-Green is configured to automatically include the flags so that red-green-refactor is meaningful. If you are in a command shell that supports colors, passing tests will be green while failing tests will be red.
+Pytest is configured to automatically include the flags so that red-green-refactor is meaningful. If you are in a command shell that supports colors, passing tests will be green while failing tests will be red.
 
 ## What's featured in the project?
 
@@ -86,7 +86,7 @@ Green is configured to automatically include the flags so that red-green-refacto
 
 ## License
 
-Copyright (c) 2021, 2023 John Rofrano. All rights reserved.
+Copyright (c) 2021, 2026 John Rofrano. All rights reserved.
 
 Licensed under the Apache License. See [LICENSE](LICENSE)
 
