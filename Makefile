@@ -20,7 +20,7 @@ venv: ## Create a Python virtual environment
 .PHONY: install
 install: ## Install dependencies
 	$(info Installing dependencies...)
-	PIPENV_VENV_IN_PROJECT=1 pipenv install
+	PIPENV_VENV_IN_PROJECT=1 pipenv install --dev
 
 .PHONY: lint
 lint: ## Run the linter
